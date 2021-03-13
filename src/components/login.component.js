@@ -15,12 +15,10 @@ export default function Login() {
                 password:password
             }
         }).then(function(res){
-            console.log('login successful',res)
             const userid=res.data.userId;
             localStorage.setItem("user_id",userid);
             window.location='http://localhost:3000/content';
         }).catch(function(err){
-            console.log('login err',err)
             if(err=="Error: Request failed with status code 401"){
                 alert("No user exits!Please try again or sign up")
             }

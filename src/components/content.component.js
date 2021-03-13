@@ -1,6 +1,5 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios';
-import ImageUploader from 'react-images-upload';
 import {ROOT} from '../Api';
 import ContentListing from './contentlisting.component';
 export default function Content(){
@@ -10,7 +9,6 @@ export default function Content(){
     const [video,setvideo]=useState([]);
     const [refreshscreen,setrefreshscreen]=useState(null);
     const [getallnotes,setgetallnotes]=useState(null);
-    const [showimageuploader,setshowimageuploader]=useState(null);
     let userid=localStorage.getItem("user_id");       
 
     useEffect(()=>{
@@ -18,10 +16,8 @@ export default function Content(){
             method:'GET',
             url:`${ROOT}/notes`,
         }).then(function(res){
-            console.log('get notes res',res);
             setgetallnotes(res.data);
         }).catch(function(err){
-            console.log('get notes err',err)
         })
     },[refreshscreen])
 
@@ -38,12 +34,10 @@ export default function Content(){
                     userId:userid
                 },
             }).then(function(res){
-                console.log('content upload res',res);
                 setTitle("");
                 setContent("");
                 setrefreshscreen(!refreshscreen);
             }).catch(function(err){
-                console.log('content upload err',err);
                 setTitle("");
                 setContent("");
                 setrefreshscreen(!refreshscreen);

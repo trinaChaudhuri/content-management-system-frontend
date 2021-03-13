@@ -5,7 +5,6 @@ import {ROOT} from '../Api';
 export default function SignUp() {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
-    const [userId,setUserId]=useState(null);
     function handleSignup(event){
         event.preventDefault()
         if(email!=="" && password!==""){
@@ -17,11 +16,9 @@ export default function SignUp() {
                     password:password
                 },
             }).then(function(res){
-                console.log('sign up res',res)
                 alert("Your account has been created,kindly login");
                 window.location=`http://localhost:3000/sign-in`;
             }).catch(function(err){
-                console.log('sign up err',err);
                 alert('account with email already exists,please sign in');
             })
         }else{
