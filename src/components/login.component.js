@@ -21,6 +21,7 @@ export default function Login() {
             window.location='http://localhost:3000/content';
         }).catch(function(err){
             console.log('login err',err)
+            alert(err);
         })
 
     }

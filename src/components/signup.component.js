@@ -8,19 +8,30 @@ export default function SignUp() {
     const [userId,setUserId]=useState(null);
     function handleSignup(event){
         event.preventDefault()
-        axios({
-            method:"POST",
-            url:`${ROOT}/signup`,
-            data:{
-                email:email,
-                password:password
-            },
-        }).then(function(res){
-            console.log('sign up res',res)
-            window.location=`http://localhost:3000/sign-in`;
-        }).catch(function(err){
-            console.log('sign up err',err);
-        })
+        if(email!=="" && password!==""){
+            axios({
+                method:"POST",
+                url:`${ROOT}/signup`,
+                data:{
+                    email:email,
+                    password:password
+                },
+            }).then(function(res){
+                console.log('sign up res',res)
+                window.location=`http://localhost:3000/sign-in`;
+            }).catch(function(err){
+                console.log('sign up err',err);
+                alert('account with email already exists,please sign in');
+            })
+        }else{
+            if(email==""){
+                alert("Please enter email");
+            }else if(password==""){
+                alert("Please enter password");
+            }else if(email=="" && password==""){
+                alert("Password and email fields cannot be empty!")
+            }
+        }
         
     }
         return (
