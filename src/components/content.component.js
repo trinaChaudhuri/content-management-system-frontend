@@ -8,7 +8,7 @@ export default function Content(){
     const [content,setContent]=useState("");
     const [image,setImage]=useState([]);
     const [video,setvideo]=useState([]);
-    const [refreshscreen,setrefreshscreen]=useState(false);
+    const [refreshscreen,setrefreshscreen]=useState(null);
     const [getallnotes,setgetallnotes]=useState(null);
     let userid=localStorage.getItem("user_id");       
 
@@ -38,10 +38,14 @@ export default function Content(){
                 },
             }).then(function(res){
                 console.log('content upload res',res);
-                setrefreshscreen(true);
+                setTitle("");
+                setContent("");
+                setrefreshscreen(!refreshscreen);
             }).catch(function(err){
                 console.log('content upload err',err);
-                setrefreshscreen(true);
+                setTitle("");
+                setContent("");
+                setrefreshscreen(!refreshscreen);
             })
         }else{
             alert("Title cannot be empty!")
