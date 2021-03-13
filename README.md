@@ -1,4 +1,4 @@
-## Texh stack used
+## Tech stack used
 React JS
 
 ## Available Scripts
