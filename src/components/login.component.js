@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {ROOT} from '../Api';
+import {ROOT,WindowUrl} from '../Api';
 import axios from 'axios';
 
 export default function Login() {
@@ -17,7 +17,7 @@ export default function Login() {
         }).then(function(res){
             const userid=res.data.userId;
             localStorage.setItem("user_id",userid);
-            window.location='http://localhost:3000/content';
+            window.location=`${WindowUrl}/content`;
         }).catch(function(err){
             if(err=="Error: Request failed with status code 401"){
                 alert("No user exits!Please try again or sign up")

@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios';
-import {ROOT} from '../Api';
+import {ROOT,WindowUrl} from '../Api';
 import ContentListing from './contentlisting.component';
 export default function Content(){
     const [title,setTitle]=useState("");
@@ -50,7 +50,7 @@ export default function Content(){
    
     return(
         <>
-        <button type="button" class="btn btn-primary float-right mb-3" onClick={()=>window.location="http://localhost:3000/sign-in"}>
+        <button type="button" class="btn btn-primary float-right mb-3" onClick={()=>window.location=`${WindowUrl}/sign-in`}>
             Log out
         </button>
         <div>

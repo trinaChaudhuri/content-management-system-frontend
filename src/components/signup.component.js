@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import {ROOT} from '../Api';
+import {ROOT,WindowUrl} from '../Api';
 
 export default function SignUp() {
     const [email,setEmail]=useState("");
@@ -17,7 +17,7 @@ export default function SignUp() {
                 },
             }).then(function(res){
                 alert("Your account has been created,kindly login");
-                window.location=`http://localhost:3000/sign-in`;
+                window.location=`${WindowUrl}/sign-in`;
             }).catch(function(err){
                 alert('account with email already exists,please sign in');
             })
