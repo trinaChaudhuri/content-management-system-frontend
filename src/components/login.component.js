@@ -21,7 +21,9 @@ export default function Login() {
             window.location='http://localhost:3000/content';
         }).catch(function(err){
             console.log('login err',err)
-            alert(err);
+            if(err=="Error: Request failed with status code 401"){
+                alert("No user exits!Please try again or sign up")
+            }
         })
 
     }
@@ -41,7 +43,9 @@ export default function Login() {
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block" onClick={(event)=>handlelogin(event)}>Submit</button>
-                
+                <p className="forgot-password text-right">
+                    New User? <a href="/sign-up">sign up</a>
+                </p>
             </form>
         );
 }

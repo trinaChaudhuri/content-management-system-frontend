@@ -18,6 +18,7 @@ export default function SignUp() {
                 },
             }).then(function(res){
                 console.log('sign up res',res)
+                alert("Your account has been created,kindly login");
                 window.location=`http://localhost:3000/sign-in`;
             }).catch(function(err){
                 console.log('sign up err',err);
@@ -50,7 +51,7 @@ export default function SignUp() {
                 <button type="submit" className="btn btn-primary btn-block"
                 onClick={(event)=>handleSignup(event)}>Sign Up</button>
                 <p className="forgot-password text-right">
-                    Already registered <a href="/sign-in">sign in?</a>
+                    Already registered?<a href="/sign-in">sign in</a>
                 </p>
             </form>
         );

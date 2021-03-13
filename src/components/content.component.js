@@ -10,6 +10,7 @@ export default function Content(){
     const [video,setvideo]=useState([]);
     const [refreshscreen,setrefreshscreen]=useState(null);
     const [getallnotes,setgetallnotes]=useState(null);
+    const [showimageuploader,setshowimageuploader]=useState(null);
     let userid=localStorage.getItem("user_id");       
 
     useEffect(()=>{
@@ -51,38 +52,23 @@ export default function Content(){
             alert("Title cannot be empty!")
         }
     }
-    const openimagehandler=()=>{
-        console.log('jjjj')
-    return(
-        <ImageUploader
-        withIcon={true}
-        buttonText='Choose images'
-        onChange={()=>onselectimagehandler()}
-        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-        maxFileSize={5242880}
-        />
-    )
-    }
-    const onselectimagehandler=(picture)=>{
-        setImage(image.concat(picture));
-    }
+   
+   
     return(
         <>
+        <button type="button" class="btn btn-primary float-right mb-3" onClick={()=>window.location="http://localhost:3000/sign-in"}>
+            Log out
+        </button>
         <div>
         <input type="text" placeholder="What's on your mind?" class="form-control" id="usr" value={title}
         onChange={(event)=>setTitle(event.target.value)}/>
         <textarea placeholder="Enter some content..." class="form-control" rows="5" id="comment"
         value={content} onChange={(event)=>setContent(event.target.value)}/> 
         </div>
-        {/* <div style={{marginLeft:'80%'}}>
-        <i class="fas fa-image" onClick={()=>openimagehandler()}></i>
-        <i class="fa fa-camera" style={{marginLeft:5}}></i>
-        </div> */}
         <div className="button-margin">
         <button type="button" class="btn btn-outline-primary" onClick={()=>handlepost()}>post</button>
         </div>
-        {getallnotes && getallnotes!==undefined && getallnotes!==null &&  <ContentListing notes={getallnotes}/>
-}
+        {getallnotes && getallnotes!==undefined && getallnotes!==null &&  <ContentListing notes={getallnotes}/>}
         </>
     )
 }
